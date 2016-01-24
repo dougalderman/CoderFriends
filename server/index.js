@@ -4,11 +4,12 @@ var express = require('express'),
     githubStrategy = require('passport-github').Strategy,
     config = require('./config.js');
 
-var gitCtrl = require('./controllers/gitCtrl.js')
+var gitCtrl = require('./controllers/gitCtrl.js');
+
+var following_new = '';
 
 var app = express(),
     port = 6320;
-
 
 app.use(express.static(__dirname + '/../public'));
 app.use(expressSession(config.express)); // use separate config file for secret
@@ -17,8 +18,16 @@ app.use(passport.session());
 
 passport.use(new githubStrategy(
   config.github, function(token, refreshToken, profile, done) {
-  return done(null, profile);
+      var following = profile._json.following_url;
+      var endUrl = following.indexOf('{');
+      following_new = following.slice(0, endUrl);
+      return done(null, profile);
 }));
+
+ app.use(function(req, res, next) {
+      res.locals.following = following_new;
+      next();
+});
 
 passport.serializeUser(function(user, done) {
     done(null, user);
@@ -41,12 +50,16 @@ app.get('/auth/logout', function(req, res) {
 
 var requireAuth = function(req, res, next) {
   if (req.isAuthenticated()) {
-		return next();
+		next();
 	}
-	return res.redirect('/#/');
+    else {
+        return res.status(403).send('Not logged in');
+    }
 }
 
-app.get('/api/github/following', requireAuth, gitCtrl.getFollowers); 
+
+
+app.get('/api/github/following', requireAuth, gitCtrl.getFollowing); 
 
 app.listen(port, function() {
     console.log('Server is running on port ' + port);

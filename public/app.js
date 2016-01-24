@@ -1,6 +1,7 @@
 angular.module('coderFriends', ['ui.router'])
 .config(function ($stateProvider, $urlRouterProvider) {
-
+    
+   
     // routing configuration code
 
     $urlRouterProvider
