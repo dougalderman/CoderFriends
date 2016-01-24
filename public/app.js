@@ -10,16 +10,15 @@ angular.module('coderFriends', ['ui.router'])
     $stateProvider
   	    .state('Base', {
   			    templateUrl: 'templates/base.html',
-  			    url: '/',
-                controller: 'baseCtrl'
-  		})
+  			    url: '/'
+        })
         .state('Home', {
   			    templateUrl: 'templates/home.html',
   			    url: '/home',
             controller: 'homeCtrl',
         })
         .state('Friend', {
-            templateUrl: 'templates/friendTmpl.html',
+            templateUrl: 'templates/friend.html',
             url: '/friend/:github_username',
             controller: 'friendCtrl'
         });

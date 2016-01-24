@@ -57,9 +57,10 @@ var requireAuth = function(req, res, next) {
     }
 }
 
-
-
 app.get('/api/github/following', requireAuth, gitCtrl.getFollowing); 
+
+app.get('/api/github/:username/activity', requireAuth, gitCtrl.getActivity); 
+
 
 app.listen(port, function() {
     console.log('Server is running on port ' + port);

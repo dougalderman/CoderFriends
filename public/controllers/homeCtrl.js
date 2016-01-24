@@ -3,7 +3,7 @@ angular.module('coderFriends')
     
     githubSvc.getFollowing() 
      .then(function( response ) {
-        console.log('response', response);
+//        console.log('response', response);
         $scope.following = response.data;
     })
     .catch(function(err) {

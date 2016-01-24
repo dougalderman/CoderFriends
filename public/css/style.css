@@ -1,0 +1,43 @@
+.friendContainer {
+  display: flex;
+  flex-direction: row;
+  height: 350px;
+/*
+  justify-content: center;
+  align-items: center;
+*/
+  justify-content: flex-start;
+/* align-items: flex-start; */
+  width: 100%;
+  margin: 20px auto; */
+}
+
+
+.friendImage {
+  height: 80%;
+  display: block;
+  text-align: center;
+  /* width: 30%; */
+  width: 20%;
+  margin: 0 20px;
+}
+
+
+.friendImage img:hover {
+    cursor: pointer;
+}
+
+h3 {
+    color: darkred;
+    font-family: Arial;
+    font-size: 1.3em;
+}
+
+h4 {
+    color: darkblue;
+    font-family: Arial;
+    font-size: 1em;
+}
+span {
+    font-weight: bold;
+}

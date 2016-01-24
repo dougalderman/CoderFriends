@@ -1,8 +1,8 @@
-Home.html<br>
-Following: 
-<div ng-repeat="friend in following">
-<img ng-src="{{friend.avatar_url}}" width="50">
+<p>Coders You Are Following:</p>
+<p>Click on an image to get coder's latest activity.</p>
+<div class="friendContainer">
+    <div class = "friendImage" ng-repeat="friend in following">
+        <a ui-sref="Friend({github_username: friend.login})"><img ng-src="{{friend.avatar_url}}" width="150"></a>
+    </div>
 </div>
-
-
 <a href="/auth/logout"><button>Logout</button></a>

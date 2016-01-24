@@ -1,1 +1,10 @@
-Friend.html
+<h3>Username: {{username}}</h3>
+<h4>List of repos most recently modified:</h4>
+<div ng-repeat="recentEvent in recentEvents">
+    <p><span>Repo name:</span> {{recentEvent.repoName}}</p>
+    <p><span>Type:</span> {{recentEvent.type}}</p>
+    <p><span>Date modified:</span> {{recentEvent.createdAt | date: 'medium'}}</p>
+    <br>
+</div>
+<a ui-sref="Home"><button>Back</button></a><br><br>
+<a href="/auth/logout"><button>Logout</button></a>
